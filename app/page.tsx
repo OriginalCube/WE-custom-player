@@ -1,7 +1,6 @@
 'use client'
-import { Image, Button } from 'antd'
-import { GithubOutlined, LinkOutlined, PlusOutlined } from '@ant-design/icons'
 import Link from 'next/link'
+import { Button } from '@/components/ui/Button'
 export default function Home() {
 	return (
 		<main
@@ -21,36 +20,25 @@ export default function Home() {
 						target={'_blank'}
 						href={'https://github.com/OriginalCube/WE-custom-player'}
 					>
-						<Button size={'large'} type={'default'} icon={<GithubOutlined />}>
-							Contribute
-						</Button>
+						<Button>Contribute</Button>
 					</a>
 					<a
 						target={'_blank'}
 						href={'https://steamcommunity.com/id/OriginalCube/myworkshopfiles/'}
 					>
-						<Button size={'large'} type={'default'} icon={<LinkOutlined />}>
-							Steam Workshop
-						</Button>
+						<Button variant={'outline'}>Steam Workshop</Button>
 					</a>
 					<Link key={'edit'} href={'/edit'}>
-						<Button
-							size={'large'}
-							type={'primary'}
-							className={'bg-blue-500'}
-							icon={<PlusOutlined />}
-						>
-							Start Creating Now!
-						</Button>
+						<Button variant={'outline'}>Start Creating Now</Button>
 					</Link>
 				</div>
 			</div>
-			<Image
-				src={'/images/Engine_Logo.gif'}
-				alt={''}
-				width={600}
-				preview={false}
-			/>
+			{/*<Image*/}
+			{/*	src={'/images/Engine_Logo.gif'}*/}
+			{/*	alt={''}*/}
+			{/*	width={600}*/}
+			{/*	preview={false}*/}
+			{/*/>*/}
 		</main>
 	)
 }
