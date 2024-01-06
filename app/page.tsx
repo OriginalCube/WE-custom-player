@@ -1,11 +1,13 @@
 'use client'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
+import Image from 'next/image'
+
 export default function Home() {
 	return (
 		<main
 			className={
-				'flex min-h-screen items-center justify-center gap-4 bg-white text-slate-800'
+				'flex min-h-screen items-center justify-center gap-4 bg-slate-100 text-slate-800'
 			}
 		>
 			<div className={'flex w-1/2 flex-col gap-4'}>
@@ -26,19 +28,23 @@ export default function Home() {
 						target={'_blank'}
 						href={'https://steamcommunity.com/id/OriginalCube/myworkshopfiles/'}
 					>
-						<Button variant={'outline'}>Steam Workshop</Button>
+						<Button variant={'outline'} className={'border-slate-800'}>
+							Steam Workshop
+						</Button>
 					</a>
 					<Link key={'edit'} href={'/edit'}>
-						<Button variant={'outline'}>Start Creating Now</Button>
+						<Button variant={'outline'} className={'border-slate-800'}>
+							Start Creating Now
+						</Button>
 					</Link>
 				</div>
 			</div>
-			{/*<Image*/}
-			{/*	src={'/images/Engine_Logo.gif'}*/}
-			{/*	alt={''}*/}
-			{/*	width={600}*/}
-			{/*	preview={false}*/}
-			{/*/>*/}
+			<Image
+				src={'/images/Engine_Logo.gif'}
+				height={500}
+				width={500}
+				alt={''}
+			/>
 		</main>
 	)
 }
