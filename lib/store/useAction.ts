@@ -1,12 +1,7 @@
 import { create } from 'zustand'
 
-const modeInitialValue: { name: boolean; color: boolean } = {
-	name: false,
-	color: false,
-}
-
 type State = {
-	mode: { name: boolean; color: boolean }
+	mode: 'files' | 'colors'
 }
 
 type Action = {
@@ -14,7 +9,7 @@ type Action = {
 }
 
 export const useAction = create<State & Action>((set) => ({
-	mode: { ...modeInitialValue },
+	mode: 'files',
 
 	changeMode: (mode) => set(() => ({ mode: mode })),
 }))

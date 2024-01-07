@@ -8,6 +8,16 @@ import {
 import { ButtonIcons } from '@/app/ui/Buttons'
 import { useAction } from '@/lib/store/useAction'
 import SidebarActions from '@/app/ui/sidebar/SidebarActions'
+import { TextInput } from '@/app/ui/Inputs'
+
+const test = (sample: string) => {
+	console.log(sample)
+}
+
+const modeActions = {
+	files: [<TextInput name={'Name'} input={test} key={0} />],
+	colors: [],
+}
 
 const Sidebar = () => {
 	const mode = useAction((state) => state.mode)
@@ -16,12 +26,12 @@ const Sidebar = () => {
 	const navbarActions = [
 		{
 			Icon: <PencilSquareIcon />,
-			action: () => changeMode({ name: true, color: false }),
+			action: () => changeMode('files'),
 			name: 'Edit Images & Name',
 		},
 		{
 			Icon: <SwatchIcon />,
-			action: () => changeMode({ name: false, color: true }),
+			action: () => changeMode('colors'),
 			name: 'Edit Colors',
 		},
 		{
@@ -46,7 +56,7 @@ const Sidebar = () => {
 			</nav>
 
 			<main className={'h-full w-[calc(100%-64px)]'}>
-				<SidebarActions />
+				<SidebarActions data={modeActions[mode]} />
 			</main>
 		</div>
 	)
