@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/Button'
 import {
 	Tooltip,
 	TooltipContent,
@@ -16,18 +15,17 @@ export const ButtonIcons = ({ Icon, action, name }: ButtonIconProps) => {
 	return (
 		<TooltipProvider>
 			<Tooltip>
-				<TooltipTrigger>
-					<Button
-						className={'size-10 bg-slate-500 p-1'}
-						size={'icon'}
-						onClick={() => action()}
-					>
-						{Icon}
-					</Button>
-					<TooltipContent side={'right'}>
-						<p className={'text-lg'}>{name}</p>
-					</TooltipContent>
+				<TooltipTrigger
+					className={
+						'size-10 rounded-md bg-slate-500 p-1 text-white opacity-80'
+					}
+					onClick={() => action()}
+				>
+					{Icon}
 				</TooltipTrigger>
+				<TooltipContent side={'left'}>
+					<p className={'text-lg'}>{name}</p>
+				</TooltipContent>
 			</Tooltip>
 		</TooltipProvider>
 	)
