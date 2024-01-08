@@ -8,15 +8,19 @@ import {
 import { ButtonIcons } from '@/app/ui/Buttons'
 import { useAction } from '@/lib/store/useAction'
 import SidebarActions from '@/app/ui/sidebar/SidebarActions'
-import { TextInput } from '@/app/ui/Inputs'
+import { TextInput, ColorInput } from '@/app/ui/Inputs'
 
-const test = (sample: string) => {
+const test = (sample: string | Object) => {
 	console.log(sample)
 }
 
 const modeActions = {
-	files: [<TextInput name={'Name'} input={test} key={0} />],
-	colors: [],
+	files: [<TextInput name={'Name'} input={test} key={'name'} />],
+	colors: [
+		<ColorInput name={'Foreground'} input={test} key={'foregroundInput'} />,
+		<ColorInput name={'Background'} input={test} key={'backgroundInput'} />,
+		<ColorInput name={'Text Background'} input={test} key={'textColorInput'} />,
+	],
 }
 
 const Sidebar = () => {
