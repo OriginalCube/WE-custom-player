@@ -9,23 +9,28 @@ import { ButtonIcons } from '@/app/ui/Buttons'
 import { useAction } from '@/lib/store/useAction'
 import SidebarActions from '@/app/ui/sidebar/SidebarActions'
 import { TextInput, ColorInput } from '@/app/ui/Inputs'
-
-const test = (sample: string | Object) => {
-	console.log(sample)
-}
-
-const modeActions = {
-	files: [<TextInput name={'Name'} input={test} key={'name'} />],
-	colors: [
-		<ColorInput name={'Foreground'} input={test} key={'foregroundInput'} />,
-		<ColorInput name={'Background'} input={test} key={'backgroundInput'} />,
-		<ColorInput name={'Text Background'} input={test} key={'textColorInput'} />,
-	],
-}
+import { useCreate } from '@/lib/store/useCreate'
 
 const Sidebar = () => {
 	const mode = useAction((state) => state.mode)
 	const changeMode = useAction((state) => state.changeMode)
+	const changeSongDetail = useCreate((state) => state.changeSongDetail)
+	const test = (sample: string | object) => {
+		changeSongDetail('name', JSON.stringify(sample))
+	}
+
+	const modeActions = {
+		files: [<TextInput name={'Name'} input={test} key={'name'} />],
+		colors: [
+			<ColorInput name={'Foreground'} input={test} key={'foregroundInput'} />,
+			<ColorInput name={'Background'} input={test} key={'backgroundInput'} />,
+			<ColorInput
+				name={'Text Background'}
+				input={test}
+				key={'textColorInput'}
+			/>,
+		],
+	}
 
 	const navbarActions = [
 		{
@@ -58,7 +63,6 @@ const Sidebar = () => {
 					<ButtonIcons Icon={Icon} action={action} name={name} key={index} />
 				))}
 			</nav>
-
 			<main className={'h-full w-[calc(100%-64px)]'}>
 				<SidebarActions data={modeActions[mode]} />
 			</main>
